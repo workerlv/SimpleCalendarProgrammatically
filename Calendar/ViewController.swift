@@ -12,14 +12,32 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        self.title = "Calender"
+        self.navigationController?.navigationBar.isTranslucent = false
+        self.view.backgroundColor = .white
+        
+        view.addSubview(calenderView)
+        NSLayoutConstraint.activate([
+            calenderView.topAnchor.constraint(equalTo: view.topAnchor, constant: 10),
+            calenderView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -12),
+            calenderView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 12),
+            calenderView.heightAnchor.constraint(equalToConstant: 365)
+            ])
+        
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
+    
+//    override func viewWillLayoutSubviews() {
+//        super.viewWillLayoutSubviews()
+//        calenderView.myCollectionView.collectionViewLayout.invalidateLayout()
+//    }
+    
+    
+    let calenderView: CalendarView = {
+        let calendar = CalendarView()
+        calendar.translatesAutoresizingMaskIntoConstraints = false
+        return calendar
+    }()
+    
 
 }
 
